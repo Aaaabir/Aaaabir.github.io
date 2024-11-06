@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Avocat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #2A2D3E; font-family: karma; " class="flex flex-col min-h-screen">
+    <div>
+        <nav style="background-color: #F9EFD0;">
+            <div class="mx-auto">
+              <div class="relative flex h-16 items-center justify-between px-5 w-full">
+                <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                  <button id="navbtn" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
+                  <div class="flex flex-shrink-0">
+                    <a href="index.html"><img class="h-8 w-auto" src="/images/logo.png" alt="Your Company"></a>
+                  </div>
+                  <div class="hidden sm:ml-6 sm:block absolute right-10">
+                    <div class="flex space-x-4">
+                      <a href="contact.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Contact</a>
+                      <a href="login.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Log in</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="sm:hidden hidden" id="mobile-menu">
+              <div class="space-y-1 px-2 pb-3 pt-2 w-fit">
+                <a href="contact.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+                <a href="login.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log in</a>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <h1 style="color: #E3DADA;" class="font-bold text-2xl text-center py-8">Admin</h1>
+    <div style="background-color: #ffffff70;" class="rounded-md text-center w-[80%] mx-auto px-4 py-8 justify-self-center overflow-x-auto">
+      <p class="font-bold text-lg md:text-xl">Liste de vos clients</p>
+      <div class="overflow-x-auto">
+          <table  class="w-full mt-4 border-separate border-spacing-y-2 border-spacing-x-1">
+              <thead class="bg-gray-600 text-white">
+                  <tr>
+                      <th class="rounded-md px-2 py-2 md:px-4 md:py-3">Client</th>
+                      <th class="rounded-md px-2 py-2 md:px-4 md:py-3">Dossier</th>
+                      <th class="rounded-md px-2 py-2 md:px-4 md:py-3">Type</th> 
+                      <th class="rounded-md px-2 py-2 md:px-4 md:py-3">Status</th>
+                      <th style="background-color: #403d3d;" class=" hidden sm:table-cell rounded-md px-2 py-2 md:px-4 md:py-3">
+                          <button id="openPopup" style="background-color: #403d3d;" class="px-2 py-1 md:px-3 md:py-2  text-white rounded hover:bg-gray-500">
+                              Add New Client
+                          </button>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody >
+                  <!-- Ligne 1 -->
+                  <tr style="background-color: #ffffff70;" class="bg-gray-100 rounded-lg">
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Reda</td>
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Affaire1</td>
+                      <td class="py-2 px-2 text-center text-sm  md:text-base md:px-4 md:py-3">Type1</td> 
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">En cours</td>
+                      <td style="background-color: #888993;" class="py-2 px-2 flex justify-center md:px-4 md:py-3 gap-2">
+        
+                        <div class=" icon-group hidden md:flex gap-x-2">
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">✏️</span>
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">💬</span>
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">🗑️</span>
+                        </div>
+                        
+                        <div class="button-container w-full relative inline-block text-pink-100">
+                          <button 
+                            style="background-color: #403d3d;"
+                            class="mobile-button md:hidden w-full h-8 flex items-center justify-center text-white rounded">
+                            V
+                          </button>
+                          
+                          <div 
+                            class="popup-frame hidden absolute left-full top-0 ml-2 bg-[#403d3d] shadow-lg rounded p-2 w-48">
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">✏️ Modifier</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">💬 Message</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">🗑️ Supprimer</button>
+                          </div>
+                        </div>
+                
+                      </td>
+                  </tr>
+                  <!-- Ligne 2 -->
+                  <tr style="background-color: #ffffff70;" class="bg-gray-100 rounded-lg">
+                    <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Aya</td>
+                    <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Affaire2</td>
+                    <td class="py-2 px-2 text-center text-sm  md:text-base md:px-4 md:py-3">Type2</td> 
+                    <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">En cours</td>
+                    <td style="background-color: #888993;" class="py-2 px-2 flex justify-center md:px-4 md:py-3 gap-2">
+      
+                      <div class="icon-group hidden md:flex gap-x-2">
+                        <span class="w-6 h-6 flex items-center justify-center cursor-pointer">✏️</span>
+                        <span class="w-6 h-6 flex items-center justify-center cursor-pointer">💬</span>
+                        <span class="w-6 h-6 flex items-center justify-center cursor-pointer">🗑️</span>
+                      </div>
+                      
+                      <div class="button-container relative w-full inline-block text-pink-100">
+                        <button 
+                          style="background-color: #403d3d;"
+                          class="mobile-button md:hidden w-full h-8 flex items-center justify-center text-white rounded">
+                          V
+                        </button>
+                        
+                        <div 
+                          class="popup-frame hidden absolute left-full top-0 ml-2 bg-[#403d3d] shadow-lg rounded p-2 w-48">
+                          <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">✏️ Modifier</button>
+                          <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">💬 Message</button>
+                          <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">🗑️ Supprimer</button>
+                        </div>
+                      </div>
+              
+                    </td>
+                </tr>
+                  <!-- Ligne 3 -->
+                  <tr style="background-color: #ffffff70;" class="bg-gray-100 rounded-lg">
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Salma</td>
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Affaire3</td>
+                      <td class="py-2 px-2 text-center text-sm  md:text-base md:px-4 md:py-3">Type3</td>
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Terminé</td>
+                      <td style="background-color: #888993;" class="py-2 px-2 flex justify-center md:px-4 md:py-3 gap-2">
+        
+                        <div class="icon-group hidden md:flex gap-x-2">
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">✏️</span>
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">💬</span>
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">🗑️</span>
+                        </div>
+                        
+                        <div class="button-container w-full relative inline-block text-pink-100">
+                          <button 
+                            style="background-color: #403d3d;"
+                            class="mobile-button md:hidden w-full h-8 flex items-center justify-center text-white rounded">
+                            V
+                          </button>
+                          
+                          <div 
+                            class="popup-frame hidden absolute left-full top-0 ml-2 bg-[#403d3d] shadow-lg rounded p-2 w-48">
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">✏️ Modifier</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">💬 Message</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">🗑️ Supprimer</button>
+                          </div>
+                        </div>
+                
+                      </td>
+                  </tr>
+                  <!-- Ligne 4 -->
+                  <tr style="background-color: #ffffff70;" class="bg-gray-100 rounded-lg">
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Rania</td>
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Affaire4</td>
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Type4</td> 
+                      <td class="py-2 px-2 text-center text-sm md:text-base md:px-4 md:py-3">Erreur</td>
+                      <td style="background-color: #888993;" class="py-2 px-2 flex justify-center md:px-4 md:py-3 gap-2">
+        
+                        <div class="icon-group hidden md:flex gap-x-2">
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">✏️</span>
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">💬</span>
+                          <span class="w-6 h-6 flex items-center justify-center cursor-pointer">🗑️</span>
+                        </div>
+                        
+                        <div class="button-container w-full relative inline-block text-pink-100">
+                          <button 
+                            style="background-color: #403d3d;"
+                            class="mobile-button md:hidden w-full h-8 flex items-center justify-center text-white rounded">
+                            V
+                          </button>
+                          
+                          <div 
+                            class="popup-frame hidden absolute left-full top-0 ml-2 bg-[#403d3d] shadow-lg rounded p-2 w-48">
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">✏️ Modifier</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">💬 Message</button>
+                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-600">🗑️ Supprimer</button>
+                          </div>
+                        </div>
+                
+                      </td>
+                      
+                  </tr>
+              </tbody>
+          </table>  
+      </div>
+      <button id="openPopup2" style="background-color: #403d3d;" class="mobile-button font-bold px-2 py-1 md:px-3 md:py-2  text-white rounded hover:bg-gray-500 mx-auto">
+        Add New Client
+      </button>
+
+      <div id="popup" class="popup hidden ">
+        <div class="popup-content bg-[#2b406b] text-[#685c70]">
+          <span id="closePopup" class="close-button text-red-500">&times;</span>
+            <h2 class="text-white font-bold">Ajouter un nouveau client</h2><br>
+            <form id="clientForm">
+                <label for="clientName">Nom:</label><br>
+                <input type="text" id="clientName" name="clientName" class="bg-[#415277] rounded-sm w-[80%]" required><br>
+                <label for="clientEmail">Email:</label><br>
+                <input type="email" id="clientEmail" name="clientEmail" class="bg-[#415277] rounded-sm w-[80%]" required><br><br>
+                <button type="submit" class="text-white bg-[#ab6515] rounded-sm w-[80%] p-2">Ajouter Client</button>
+            </form>
+        </div>
+    </div>
+      
+   </div>
+  
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+
+      <script>
+        $(document).ready(function() {
+          $('#navbtn').click(function() {
+            $('#mobile-menu').slideToggle();
+          });
+        });
+        function togglePopup() {
+              const popup = document.getElementById('popupFrame');
+              popup.classList.toggle('hidden');
+            }
+
+          document.getElementById('openPopup').addEventListener('click', function() {
+              document.getElementById('popup').classList.remove('hidden');
+          
+          });
+
+          document.getElementById('openPopup2').addEventListener('click', function() {
+              document.getElementById('popup').classList.remove('hidden');
+          
+          });
+
+          document.getElementById('closePopup').addEventListener('click', function() {
+              document.getElementById('popup').classList.add('hidden');
+          });
+
+          document.getElementById('clientForm').addEventListener('submit', function(event) {
+              event.preventDefault(); 
+              console.log('Client ajouté:', {
+                  name: event.target.clientName.value,
+                  email: event.target.clientEmail.value
+              });
+              document.getElementById('popup').classList.add('hidden');
+          });
+
+           
+      </script>
+
+    <div id="footer" class="fixed bottom-0 left-0 right-0 bg-[#74531C] text-white p-2 flex items-center">
+      <img class="max-h-14 max-w-14 flex-grow" src="/images/logo.png" alt="">
+      <div class="flex-grow text-center p-2 flex items-center justify-center">
+          <div>
+              <p>MohamedSaad001@gmail.com</p>
+              <p>+212 6-02-33-56-70</p>
+          </div>
+      </div>
+      <div id="map" class="flex-grow w-40"></div> 
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+
+      const footer = document.getElementById('footer');
+
+      window.addEventListener('scroll', () => {
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+              footer.classList.remove('hidden');
+              footer.classList.add('block');
+          } else {
+              footer.classList.add('hidden');
+              footer.classList.remove('block');
+          }
+      });
+
+
+      const map = L.map('map').setView([33.5623298, -7.5625511], 12); 
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.marker([33.5623298, -7.5625511]).addTo(map)
+          .bindPopup('Voici votre localisation!')
+          .openPopup();
+    </script>
+      
+
+    </div>
+  </body>  
+
+  
+  </html>

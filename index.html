@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+</head>
+<body style="background-color: #2A2D3E;">
+    <div>
+        <nav style="background-color: #F9EFD0;">
+            <div class="mx-auto">
+              <div class="relative flex h-16 items-center justify-between px-5 w-full">
+                <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                  <button id="navbtn" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
+                  <div class="flex flex-shrink-0">
+                    <a href="index.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
+                  </div>
+                  <div class="hidden sm:ml-6 sm:block absolute right-10">
+                    <div class="flex space-x-4">
+                      <a href="contact.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Contact</a>
+                      <a href="login.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Log in</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sm:hidden hidden" id="mobile-menu">
+              <div class="space-y-1 px-2 pb-3 pt-2 w-fit">
+                <a href="contact.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400 hover:text-white">Contact</a>
+                <a href="login.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400 hover:text-white">Log in</a>
+              </div>
+            </div>
+        </nav>
+
+        <!-- Diaporama avec Tailwind -->
+        <div class="relative overflow-hidden max-w-[100vw] max-h-[90vh] w-full h-full pl-16 pr-12 sm:items-stretch   sm:justify-start">
+          <div class="flex  justify-center w-[200%] slideshow-slide">
+              <!-- Image 1 -->
+              <div class="w-1/2 h-auto m-10">
+                  <img src="images/defil1.jpg" alt="Image 1" class="w-full h-auto object-cover rounded-lg">
+              </div>
+              <!-- Image 2 -->
+              <div class="w-1/2 h-auto m-10">
+                  <img src="images/defil2.jpg" alt="Image 2" class="w-full h-auto object-cover rounded-lg">
+              </div>
+          </div>
+        </div>
+
+        
+
+        <div class="flex justify-center ">
+          <div class=" grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center pl-32 pr-32 pt-6 sm:items-stretch  max-w-7xl sm:justify-start">
+            <!-- Bloc 1 avec une image locale -->
+            <div class=" rounded-lg overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:scale-105  hover:bg-[#C5B9A4] font-bold">
+              <img src="images/droit-civil-1.jpg" alt="Image 1" class="w-full h-auto object-cover"><br>
+              <p class="text-sm text-gray-600">Régir les relations entre les personnes, en matière de famille, de propriété et de contrats.</p>
+            </div>
+          
+            <!-- Bloc 2 avec une image locale -->
+            <div class=" rounded-lg overflow-hidden shadow-lg bg-white  transition-transform duration-300 hover:scale-105    hover:bg-[#760F2A] font-bold">
+              <img src="images/DroitPenal.jpg" alt="Image 2" class=" w-full h-auto object-cover"><br>
+              <p class="text-sm text-gray-600">Régir les infractions et les sanctions visant à protéger l'ordre public.</p><br>
+            </div>
+          
+            <!-- Bloc 3 avec une image locale -->
+          <div class="rounded-lg overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:scale-105   hover:bg-[#656E9E] font-bold ">
+            <img src="images/shu-Foys-Company-Commercial-Law-268128086-Zerbor-1500x1000.webp" alt="Image 3" class="w-full h-51 object-cover">
+            <p class="text-sm text-gray-600 p-4">Encadrer les activités des commerçants et les actes de commerce entre professionnels.</p>
+          </div>
+
+          </div>
+        </div>
+
+        
+      
+        <div class="flex justify-center">
+          <div class="m-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-7xl w-full *:text-2xl font-bold">
+              
+              <div style="background-color: #A1875D; color: #333333;" class="min-h-[100px] rounded-lg p-4 ">
+                  +750
+                  <p class="text-sm font-normal">Affaires traitées avec succès</p>
+              </div>
+              
+              <div style="background-color: #29271C; color: #615858;" class="min-h-[100px] p-4 rounded-lg text-white">
+                  97%
+                  <p class="text-sm font-normal">Taux de réussite</p>
+              </div>
+              
+              <div style="background-color: #5B7B87; color: #C4C19D;" class="min-h-[100px] p-4 rounded-lg text-white ">
+                  12
+                  <p class="text-sm font-normal">Ans d'expérience</p>
+              </div>
+      
+          </div>
+      </div>
+      
+        
+
+
+              <!-- Conteneur principal centré avec trois avis utilisateurs -->
+      <div class="flex  flex-col items-center m-10 ">
+        <h2 style="color: #8F5B5B;" class="text-3xl font-bold mb-8 text-center  ">Ils nous font confiance</h2>
+              
+              <!-- Grille de trois avis -->
+              <div class="grid grid-cols- sm:grid-cols-1   gap-x-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl w-full p-10 w-full   ">
+                  
+                  <!-- Avis utilisateur 1 -->
+                  <div class="flex flex-col    bg-white p-6 rounded-lg   shadow-lg ">
+                      <img src="images/00137-1714524104.jpeg" alt="User 1" class="w-24 h-24 rounded-full  object-cover">
+                      <span class="text-gray-500 mt-2">- @aaaabir8</span>
+                      <p class="text-gray-700 text-center">"Grâce à l'équipe de ce cabinet, j'ai pu résoudre une affaire complexe rapidement et efficacement. Leur expertise et leur réactivité m'ont impressionné. Je les recommande vivement"</p>
+                  </div>
+                  
+                  <!-- Avis utilisateur 2 -->
+                  <div class="flex flex-col  bg-white p-6  rounded-lg  shadow-lg ">
+                      <img src="images/WhatsApp Image 2024-10-20 à 17.54.01_eae83568.jpg" alt="User 2" class="w-24 h-24 rounded-full mb-4 object-cover">
+                      <span class="text-gray-500 mt-2">- @moon</span>
+
+                      <p class="text-gray-700 text-center">"Le cabinet m'a accompagnée avec professionnalisme et transparence tout au long de mon dossier. Leur approche humaine et leur rigueur ont fait toute la différence."</p>
+                  </div>
+                  
+                  <!-- Avis utilisateur 3 -->
+                  <div class="flex flex-col  bg-white p-6 rounded-lg   shadow-lg ">
+                      <img src="images/61gEmBdHkUL.jpg" alt="User 3" class="w-24 h-24 rounded-full mb-4 object-cover">
+                      <span class="text-gray-500 mt-2">- @pinkyw</span>
+                      <p class="text-gray-700 text-center">"J'ai été impressionné par leur capacité à gérer des situations juridiques difficiles tout en restant accessibles et à l'écoute. Un service juridique de haute qualité "</p>
+                  </div>
+              </div>
+        
+      </div>
+                
+      <div class="relative flex justify-center items-center w-full h-auto m-10">
+        <div class="relative w-1/2">
+          <!-- Image avec largeur personnalisée -->
+          <img src="images/adv-criminalista-1.jpg" alt="Image 1" class="w-full h-auto  rounded-lg">
+          
+          <!-- Bouton centré sur l'image -->
+          <a     href="login.html" class="absolute inset-0 m-auto w-fit h-10 bg-opacity-80 bg-black text-white font-bold rounded hover:bg-neutral-700 flex justify-center items-center">
+            Prendre un rendez-vous
+          </a>
+        </div>
+      </div>
+      
+      
+        <!-- Footer avec Google Maps -->
+         
+        <div id="footer" class=" bottom-0 left-0 right-0 bg-[#74531C] text-white flex items-center justify-between p-4">
+          <img class="h-14 w-14" src="/images/logo.png" alt="Logo">
+          <div class="text-center">
+              <p>MohamedSaad001@gmail.com</p>
+              <p>+212 6-02-33-56-70</p>
+          </div>
+          <div id="map" class="w-40 h-40 rounded-md"></div> <!-- Map container -->
+      </div>
+      
+      
+
+      <!-- JavaScript de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Script pour initialiser la carte -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const map = L.map('map').setView([33.5623298, -7.5625511], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            L.marker([33.5623298, -7.5625511]).addTo(map)
+                .bindPopup('Votre localisation ici!')
+                .openPopup();
+        });
+    </script>
+
+    
+        
+
+        
+
+
+
+
+    </div>
+
+
+    
+    <script>
+      $(document).ready(function() {
+        $('#navbtn').click(function() {
+          $('#mobile-menu').slideToggle();
+        });
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="stylelg.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body style="background-color: #2A2D3E;">
+    <div>
+        <nav style="background-color: #F9EFD0;">
+            <div class="mx-auto">
+              <div class="relative flex h-16 items-center justify-between px-5 w-full">
+                <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                  <button id="navbtn" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
+                  <div class="flex flex-shrink-0">
+                    <a href="index.html"><img class="h-8 w-auto" src="/images/logo.png" alt="Your Company"></a>
+                  </div>
+                  <div class="hidden sm:ml-6 sm:block absolute right-10">
+                    <div class="flex space-x-4">
+                      <a href="contact.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Contact</a>
+                      <a href="login.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Log in</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div class="sm:hidden hidden" id="mobile-menu">
+              <div class="space-y-1 px-2 pb-3 pt-2 w-fit">
+                <a href="contact.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+                <a href="login.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log in</a>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="wrapper">
+    
+
+      <!----------------------------- Form box ----------------------------------->    
+          <div class="form-box">
+              
+              <!------------------- login form -------------------------->
+      
+              <div class="login-container" id="login">
+                <div class="top">
+                  <header class="text-[#E6B5B5]">Un problème? Contactez nous!</header>                
+    
+              </div>
+              <div class="input-box">
+                <label for="Nom" class="m-5 text-[#888888] font-medium " >Nom complet : </label>
+                <input type="text" class="input-field mb-5" placeholder="Aabir Hamdaoui"> 
+              </div>
+            
+              <div class="input-box">
+                <label for="email" class="m-5 text-[#888888] font-medium " >Email :</label>
+                  <input type="email" class="input-field mb-5" placeholder="aabir@gmail.com">
+              </div>
+    
+              <div class="input-box">
+                <label for="msg" class="m-5 text-[#888888] font-medium " >Message :</label>
+                  <textarea name="msg" class="input-field mb-5 h-32" placeholder="Message" ></textarea>
+              </div>
+    
+              <div class="input-box">
+                  <button class="submit" type="submit">Envoyer</button>
+              </div>
+              </div>
+      
+                   
+              
+          </div>
+      </div>   
+      <div id="footer" class="fixed bottom-0 left-0 right-0 bg-[#74531C] text-white p-2 flex items-center">
+        <img class="max-h-14 max-w-14 flex-grow" src="/images/logo.png" alt="">
+        <div class="flex-grow text-center p-2 flex items-center justify-center">
+            <div>
+                <p>MohamedSaad001@gmail.com</p>
+                <p>+212 6-02-33-56-70</p>
+            </div>
+        </div>
+        <div id="map" class="flex-grow w-40"></div> 
+      </div>
+  
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+      <script>
+  
+        const footer = document.getElementById('footer');
+  
+        window.addEventListener('scroll', () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+                footer.classList.remove('hidden');
+                footer.classList.add('block');
+            } else {
+                footer.classList.add('hidden');
+                footer.classList.remove('block');
+            }
+        });
+  
+  
+        const map = L.map('map').setView([33.5623298, -7.5625511], 12); 
+  
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+  
+        L.marker([33.5623298, -7.5625511]).addTo(map)
+            .bindPopup('Voici votre localisation!')
+            .openPopup();
+      </script>
+      
+
+
+    <script>
+      $(document).ready(function() {
+        $('#navbtn').click(function() {
+          $('#mobile-menu').slideToggle();
+        });
+      });
+    </script>
+</body>
+</html>

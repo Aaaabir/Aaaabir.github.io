@@ -1,0 +1,214 @@
+@keyframes slide-animation {
+    0%, 33% { transform: translateX(0); }          /* Pause sur la première image */
+    50%, 83% { transform: translateX(-50%); }     /* Transition vers la deuxième image et pause */
+    100% { transform: translateX(0); }             /* Retour à la première image */
+}
+
+.slideshow-slide {
+    animation: slide-animation 12s infinite ease-in-out;
+    gap: 10px; /* Ajoute un espace entre les images */
+}
+
+
+#map {
+    height: 80px;
+  }
+
+
+
+
+    .button-container:hover .popup-frame {
+      display: block;
+    }
+
+    @media (min-width: 640px) {
+      .mobile-button {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .icon-group {
+        display: none; 
+      }
+      .mobile-button {
+        display: flex; 
+      }
+    }
+
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      position: relative;
+  }
+  
+  .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+  }
+  
+  .hidden {
+      display: none;
+  }
+  
+
+
+#footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #74531C;
+    color: #2A2D3E;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+#map {
+    width: 400px; /* Ajustez la largeur de la carte */
+    height: 100px; /* Ajustez la hauteur de la carte */
+    border-radius: 8px;
+}
+
+
+
+#map {
+    height: 80px;
+  }
+
+
+
+
+    .button-container:hover .popup-frame {
+      display: block;
+    }
+
+    @media (min-width: 640px) {
+      .mobile-button {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 640px) {F
+      .icon-group {
+        display: none; 
+      }
+      .mobile-button {
+        display: flex; 
+      }
+    }
+
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      position: relative;
+  }
+  
+  .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+  }
+  
+  .hidden {
+      display: none;
+  }
+
+/* Style général */
+
+
+.container.active {
+  display: block;
+}
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+  color:black !important;
+  border-radius: 20px !important;
+}
+
+/* Style des boutons */
+#rendezVousBtn {
+  background-color: #656E9E !important; /* Couleur pour "Rendez-vous" */
+  opacity: 0.6; /* Moins coloré par défaut */
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#dossiersBtn {
+  background-color: #E6B5B5 !important; /* Couleur pour "Dossiers" */
+  opacity: 0.6; /* Moins coloré par défaut */
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Styles pour le bouton actif */
+.active-button {
+  opacity: 1 !important; /* Plus coloré pour le bouton actif */
+  font-weight: bold;
+}
+
+/* Style au survol */
+button:hover {
+  opacity: 1; /* Pour un effet de survol où le bouton devient complètement opaque */
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.input-date {
+  background-color: #444;
+  color: #FFF;
+  padding: 10px;
+}
+.btn-sujet {
+  background-color: #A98238;
+}
+.custom-margin {
+  margin-right: 70px;
+}

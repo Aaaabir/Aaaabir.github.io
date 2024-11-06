@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="stylelg.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <title>Login</title>
+    <style>
+      #mobile-menu {
+  display: none;
+}
+
+    </style>
+</head>
+<body> 
+  <div>
+    <nav style="background-color: #F9EFD0;">
+      <div class="mx-auto">
+        <div class="relative flex h-16 items-center justify-between px-5 w-full">
+          <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+            <button id="navbtn" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Open main menu</span>
+              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
+            <div class="flex flex-shrink-0">
+              <a href="index.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
+            </div>
+            <div class="hidden sm:ml-6 sm:block absolute right-10">
+              <div class="flex space-x-4">
+                <a href="contact.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Contact</a>
+                <a href="login.html" style="color: #74531C;" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-950">Log in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm:hidden hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2 w-fit">
+          <a href="contact.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400 hover:text-white">Contact</a>
+          <a href="login.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-400 hover:text-white">Log in</a>
+        </div>
+      </div>
+  </nav>
+
+    <div class="bg-[#2A2D3E] p-10 flex justify-end">
+      <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+      <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+  </div>
+  
+       
+        
+ <div class="wrapper">
+    
+
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+
+        <div class="login-container" id="login">
+            <div class="top">
+                <header >Connexion</header>                
+                <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+
+            </div>
+            <div class="input-box">
+              <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
+              <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
+              <!-- <i class="bx bx-user"></i> Retiré -->
+            </div>
+          
+            <div class="input-box">
+              <label for="mdps " class="m-5 text-[#888888] font-medium " >Mot de passe </label>
+                <input type="password" class="input-field mb-5" placeholder="************">
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Sign In">
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#" onclick="openForgotPasswordModal()">Forgot password?</a></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Modal -->
+        <div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+          <div class="bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000 ">
+              <h2 class="text-xl font-semibold mb-4">Reset Password</h2>
+              
+              <div class="input-box">
+                <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
+                <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
+                <!-- <i class="bx bx-user"></i> Retiré -->
+              </div>
+            
+              <div class="input-box">
+                <label for="mdps " class="m-5 text-[#888888] font-medium " >Mot de passe </label>
+                  <input type="password" class="input-field mb-5" placeholder="************">
+              </div>
+
+              <!-- Submit Button -->
+              <div class="flex justify-end" class="input-box">
+                  <button onclick="submitNewPassword()" class="submit" class="bg-blue-600 text-white px-4 py-2 rounded mr-2">Submit</button>
+                  
+              </div>
+          </div>
+        </div>
+
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <div class="two-forms">
+                <div class="input-box text-gray-50 font-medium  ">
+                  <label for="Nom"> Nom</label>
+                    <input type="text" class="input-field mb-5" placeholder="jane">
+                    
+                </div>
+                <div class="input-box text-gray-50 font-medium ">
+                  <label for="Nom"> Prénom</label>
+                    <input type="text" class="input-field mb-5" placeholder="Smith">
+                    
+                </div>
+            </div>
+            <div class="input-box text-gray-50 font-medium ">
+              <label for="Email"> Email</label>
+                <input type="text" class="input-field mb-5" placeholder="Email">
+            </div>
+            <div class="input-box text-gray-50 font-medium ">
+              <label for="mdps"> Mot de passe</label>
+                <input type="password" class="input-field mb-5" placeholder="**********">
+               
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Register">
+            </div>
+            <div class="two-col">
+              <div class="one">
+                  <input type="checkbox" id="login-check">
+                  <label for="login-check"> Remember Me</label>
+              </div>
+              
+          </div>
+        </div>
+    </div>
+</div>   
+ <!-- Footer avec Google Maps -->
+         
+ <div id="footer" class=" bottom-0 left-0 right-0 bg-[#74531C] text-white flex items-center justify-between p-6">
+  <img class="h-14 w-14" src="/images/logo.png" alt="Logo">
+  <div class="text-center">
+      <p>MohamedSaad001@gmail.com</p>
+      <p>+212 6-02-33-56-70</p>
+  </div>
+  <div id="map" class="w-40 h-40 rounded-md"></div> <!-- Map container -->
+</div>
+
+
+
+<!-- JavaScript de Leaflet -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Script pour initialiser la carte -->
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const map = L.map('map').setView([33.5623298, -7.5625511], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([33.5623298, -7.5625511]).addTo(map)
+        .bindPopup('Votre localisation ici!')
+        .openPopup();
+});
+</script>
+
+<script>// Fonction pour afficher la modale
+  function openForgotPasswordModal() {
+      document.getElementById("forgotPasswordModal").classList.remove("hidden");
+  }
+  
+  // Fonction pour fermer la modale
+  function closeModal() {
+      document.getElementById("forgotPasswordModal").classList.add("hidden");
+  }
+  
+  // Fonction pour gérer la soumission du nouveau mot de passe
+  function submitNewPassword() {
+      const email = document.getElementById("email").value;
+      const newPassword = document.getElementById("newPassword").value;
+  
+      // Logique pour soumettre l'email et le mot de passe ici (par exemple, envoyer vers le serveur)
+      alert(`Email: ${email}\nNew Password: ${newPassword}`);
+  
+      // Fermer la modale après soumission
+      closeModal();
+  }
+  </script>
+
+
+<script>
+   
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+ 
+</script>
+
+<script>
+
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#navbtn').click(function() {
+        $('#mobile-menu').slideToggle();  // This will slide the menu in and out
+    });
+});
+
+</script>
+
+</body>
+</html>
