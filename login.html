@@ -39,7 +39,7 @@
           </div>
           <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
             <div class="flex flex-shrink-0">
-              <a href="home.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
+              <a href="index.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
             </div>
             <div class="hidden sm:ml-6 sm:block absolute right-10">
               <div class="flex space-x-4">
@@ -91,7 +91,7 @@
                 <input type="password" class="input-field mb-5" placeholder="************">
             </div>
             <div class="input-box">
-                <input type="submit" class="submit" value="Sign In">
+                <input type="submit" class="submit" value="Sign In" onclick="window.location.href='client.html'">
             </div>
             <div class="two-col">
                 <div class="one">
@@ -105,28 +105,32 @@
         </div>
 
         <!-- Forgot Password Modal -->
-        <div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div class="bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000 ">
-              <h2 class="text-xl font-semibold mb-4">Reset Password</h2>
-              
-              <div class="input-box">
-                <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
-                <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
-                <!-- <i class="bx bx-user"></i> Retiré -->
-              </div>
-            
-              <div class="input-box">
-                <label for="mdps " class="m-5 text-[#888888] font-medium " >Mot de passe </label>
-                  <input type="password" class="input-field mb-5" placeholder="************">
-              </div>
+<div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000 relative">
+    <!-- Close Button -->
+    <button onclick="closeModal()" class="absolute top-2 right-2 text-white text-lg font-bold">✕</button>
 
-              <!-- Submit Button -->
-              <div class="flex justify-end" class="input-box">
-                  <button onclick="submitNewPassword()" class="submit" class="bg-blue-600 text-white px-4 py-2 rounded mr-2">Submit</button>
-                  
-              </div>
-          </div>
-        </div>
+    <h2 class="text-xl font-semibold mb-4">Reset Password</h2>
+    
+    <div class="input-box">
+      <label for="Email" class="m-5 text-[#888888] font-medium">Email</label>
+      <input type="text" class="input-field mb-5" placeholder="Username or Email">
+    </div>
+  
+    <div class="input-box">
+      <label for="mdps" class="m-5 text-[#888888] font-medium">Mot de passe</label>
+      <input type="password" class="input-field mb-5" placeholder="************">
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-end">
+      <button onclick="submitNewPassword()" class="bg-blue-600 text-white px-4 py-2 rounded mr-2">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+
 
         <!------------------- registration form -------------------------->
         <div class="register-container" id="register">
@@ -210,7 +214,6 @@
   function openForgotPasswordModal() {
       document.getElementById("forgotPasswordModal").classList.remove("hidden");
   }
-  
   // Fonction pour fermer la modale
   function closeModal() {
       document.getElementById("forgotPasswordModal").classList.add("hidden");
