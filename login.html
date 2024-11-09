@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="stylelg.css">
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
     <title>Login</title>
@@ -37,7 +38,7 @@
           </div>
           <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
             <div class="flex flex-shrink-0">
-              <a href="index.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
+              <a href="home.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
             </div>
             <div class="hidden sm:ml-6 sm:block absolute right-10">
               <div class="flex space-x-4">
@@ -81,7 +82,6 @@
             <div class="input-box">
               <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
               <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
-              <!-- <i class="bx bx-user"></i> Retiré -->
             </div>
           
             <div class="input-box">
@@ -102,45 +102,56 @@
             </div>
         </div>
 
-        <!-- Forgot Password Modal -->
-        <div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div class="bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000 ">
-              <h2 class="text-xl font-semibold mb-4">Reset Password</h2>
-              
-              <div class="input-box">
-                <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
-                <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
-                <!-- <i class="bx bx-user"></i> Retiré -->
-              </div>
-            
-              <div class="input-box">
-                <label for="mdps " class="m-5 text-[#888888] font-medium " >Mot de passe </label>
-                  <input type="password" class="input-field mb-5" placeholder="************">
-              </div>
+       <!-- Modal pour le mot de passe oublié -->
+<div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="relative bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000">
 
-              <!-- Submit Button -->
-              <div class="flex justify-end" class="input-box">
-                  <button onclick="submitNewPassword()" class="submit" class="bg-blue-600 text-white px-4 py-2 rounded mr-2">Submit</button>
-                  
-              </div>
-          </div>
-        </div>
+<button onclick="closeModal()" class="absolute top-2 right-2 text-gray-300 hover:text-white text-3xl font-bold">
+  &times;
+</button>
+    
+    <h2 class="text-xl font-semibold text-slate-900 mb-4 text-center">Changer mot de passe </h2>
+    <a href="login.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-center text-gray-300 hover:bg-gray-400 hover:text-white">Log in</a>
+
+    <div class="input-box">
+      <label for="Email" class="m-5 text-[#888888] font-medium">Email</label>
+      <input type="text" class="input-field mb-5" placeholder="Username or Email">
+    </div>
+    
+    <div class="input-box">
+      <label for="mdps" class="m-5 text-[#888888] font-medium">Mot de passe</label>
+      <input type="password" class="input-field mb-5" placeholder="************">
+    </div>
+
+    <!-- Bouton d'envoi -->
+    <div class="flex justify-end">
+      <button onclick="submitNewPassword()" class="bg-[#74531C] text-white px-4 py-2 rounded mr-2">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function closeModal() {
+    document.getElementById("forgotPasswordModal").classList.add("hidden");
+  }
+</script>
+
 
         <!------------------- registration form -------------------------->
         <div class="register-container" id="register">
             <div class="top">
-                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
-                <header>Sign Up</header>
+                <header>Sign Up</header>                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+
             </div>
             <div class="two-forms">
                 <div class="input-box text-gray-50 font-medium  ">
                   <label for="Nom"> Nom</label>
-                    <input type="text" class="input-field mb-5" placeholder="jane">
+                    <input type="text" class="input-field mb-5" placeholder="RCA">
                     
                 </div>
                 <div class="input-box text-gray-50 font-medium ">
-                  <label for="Nom"> Prénom</label>
-                    <input type="text" class="input-field mb-5" placeholder="Smith">
+                  <label for="preNom"> Prénom</label>
+                    <input type="text" class="input-field mb-5" placeholder="Rihaab">
                     
                 </div>
             </div>
@@ -168,13 +179,14 @@
 </div>   
  <!-- Footer avec Google Maps -->
          
- <div id="footer" class=" bottom-0 left-0 right-0 bg-[#74531C] text-white flex items-center justify-between p-6">
-  <img class="h-14 w-14" src="/images/logo.png" alt="Logo">
-  <div class="text-center">
+ <div id="footer" class=" bottom-0 left-0 right-0   p-4">
+  <div class="flex flex-shrink-0">
+    <a href="home.html"><img class="h-12 w-auto" src="images/logo.png" alt="Your Company"></a>
+  </div>  <div class="text-white ">
       <p>MohamedSaad001@gmail.com</p>
       <p>+212 6-02-33-56-70</p>
   </div>
-  <div id="map" class="w-40 h-40 rounded-md"></div> <!-- Map container -->
+  <div id="map" ></div> <!-- Map container -->
 </div>
 
 
@@ -184,7 +196,6 @@
 
 <!-- Script pour initialiser la carte -->
 <script>
-
 document.addEventListener("DOMContentLoaded", function() {
     const map = L.map('map').setView([33.5623298, -7.5625511], 13);
 
@@ -244,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var y = document.getElementById("register");
 
     function login() {
-        x.style.left = "4px";
+        x.style.left = "2px";
         y.style.right = "-520px";
         a.className += " white-btn";
         b.className = "btn";
@@ -254,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function register() {
         x.style.left = "-510px";
-        y.style.right = "5px";
+        y.style.right = "4px";
         a.className = "btn";
         b.className += " white-btn";
         x.style.opacity = 0;
