@@ -8,7 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="stylelg.css">
-    
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
     <title>Login</title>
@@ -82,6 +81,7 @@
             <div class="input-box">
               <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
               <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
+              <!-- <i class="bx bx-user"></i> Retiré -->
             </div>
           
             <div class="input-box">
@@ -102,56 +102,45 @@
             </div>
         </div>
 
-       <!-- Modal pour le mot de passe oublié -->
-<div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-  <div class="relative bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000">
+        <!-- Forgot Password Modal -->
+        <div id="forgotPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+          <div class="bg-opacity-85 bg-[#2A2D3E] rounded-lg p-6 w-1000 ">
+              <h2 class="text-xl font-semibold mb-4">Reset Password</h2>
+              
+              <div class="input-box">
+                <label for="Email " class="m-5 text-[#888888] font-medium " >Email</label>
+                <input type="text" class="input-field mb-5" placeholder="Username or Email"> <!-- Ajoute une marge en bas -->
+                <!-- <i class="bx bx-user"></i> Retiré -->
+              </div>
+            
+              <div class="input-box">
+                <label for="mdps " class="m-5 text-[#888888] font-medium " >Mot de passe </label>
+                  <input type="password" class="input-field mb-5" placeholder="************">
+              </div>
 
-<button onclick="closeModal()" class="absolute top-2 right-2 text-gray-300 hover:text-white text-3xl font-bold">
-  &times;
-</button>
-    
-    <h2 class="text-xl font-semibold text-slate-900 mb-4 text-center">Changer mot de passe </h2>
-    <a href="login.html" style="color: #74531C;" class="block rounded-md px-3 py-2 text-base font-medium text-center text-gray-300 hover:bg-gray-400 hover:text-white">Log in</a>
-
-    <div class="input-box">
-      <label for="Email" class="m-5 text-[#888888] font-medium">Email</label>
-      <input type="text" class="input-field mb-5" placeholder="Username or Email">
-    </div>
-    
-    <div class="input-box">
-      <label for="mdps" class="m-5 text-[#888888] font-medium">Mot de passe</label>
-      <input type="password" class="input-field mb-5" placeholder="************">
-    </div>
-
-    <!-- Bouton d'envoi -->
-    <div class="flex justify-end">
-      <button onclick="submitNewPassword()" class="bg-[#74531C] text-white px-4 py-2 rounded mr-2">Submit</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  function closeModal() {
-    document.getElementById("forgotPasswordModal").classList.add("hidden");
-  }
-</script>
-
+              <!-- Submit Button -->
+              <div class="flex justify-end" class="input-box">
+                  <button onclick="submitNewPassword()" class="submit" class="bg-blue-600 text-white px-4 py-2 rounded mr-2">Submit</button>
+                  
+              </div>
+          </div>
+        </div>
 
         <!------------------- registration form -------------------------->
         <div class="register-container" id="register">
             <div class="top">
-                <header>Sign Up</header>                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
-
+                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                <header>Sign Up</header>
             </div>
             <div class="two-forms">
                 <div class="input-box text-gray-50 font-medium  ">
                   <label for="Nom"> Nom</label>
-                    <input type="text" class="input-field mb-5" placeholder="RCA">
+                    <input type="text" class="input-field mb-5" placeholder="jane">
                     
                 </div>
                 <div class="input-box text-gray-50 font-medium ">
-                  <label for="preNom"> Prénom</label>
-                    <input type="text" class="input-field mb-5" placeholder="Rihaab">
+                  <label for="Nom"> Prénom</label>
+                    <input type="text" class="input-field mb-5" placeholder="Smith">
                     
                 </div>
             </div>
@@ -177,42 +166,36 @@
         </div>
     </div>
 </div>   
-<div id="footer" class="fixed bottom-0 left-0 right-0 bg-[#74531C] text-white p-2 flex items-center">
-  <img class="max-h-14 max-w-14 flex-grow" src="images/logo.png" alt="">
-  <div class="flex-grow text-center p-2 flex items-center justify-center">
-      <div>
-          <p>MohamedSaad001@gmail.com</p>
-          <p>+212 6-02-33-56-70</p>
-      </div>
+ <!-- Footer avec Google Maps -->
+         
+ <div id="footer" class=" bottom-0 left-0 right-0 bg-[#74531C] text-white flex items-center justify-between p-6">
+  <img class="h-14 w-14" src="/images/logo.png" alt="Logo">
+  <div class="text-center">
+      <p>MohamedSaad001@gmail.com</p>
+      <p>+212 6-02-33-56-70</p>
   </div>
-  <div id="map" class="flex-grow w-40"></div> 
+  <div id="map" class="w-40 h-40 rounded-md"></div> <!-- Map container -->
 </div>
 
+
+
+<!-- JavaScript de Leaflet -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Script pour initialiser la carte -->
 <script>
 
-  const footer = document.getElementById('footer');
+document.addEventListener("DOMContentLoaded", function() {
+    const map = L.map('map').setView([33.5623298, -7.5625511], 13);
 
-  window.addEventListener('scroll', () => {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
-          footer.classList.remove('hidden');
-          footer.classList.add('block');
-      } else {
-          footer.classList.add('hidden');
-          footer.classList.remove('block');
-      }
-  });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-
-  const map = L.map('map').setView([33.5623298, -7.5625511], 12); 
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  L.marker([33.5623298, -7.5625511]).addTo(map)
-      .bindPopup('Voici votre localisation!')
-      .openPopup();
+    L.marker([33.5623298, -7.5625511]).addTo(map)
+        .bindPopup('Votre localisation ici!')
+        .openPopup();
+});
 </script>
 
 <script>// Fonction pour afficher la modale
@@ -261,7 +244,7 @@
     var y = document.getElementById("register");
 
     function login() {
-        x.style.left = "2px";
+        x.style.left = "4px";
         y.style.right = "-520px";
         a.className += " white-btn";
         b.className = "btn";
@@ -271,7 +254,7 @@
 
     function register() {
         x.style.left = "-510px";
-        y.style.right = "4px";
+        y.style.right = "5px";
         a.className = "btn";
         b.className += " white-btn";
         x.style.opacity = 0;
