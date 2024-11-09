@@ -177,36 +177,42 @@
         </div>
     </div>
 </div>   
- <!-- Footer avec Google Maps -->
-         
- <div id="footer" class=" bottom-0 left-0 right-0   p-4">
-  <div class="flex flex-shrink-0">
-    <a href="home.html"><img class="h-12 w-auto" src="images/logo.png" alt="Your Company"></a>
-  </div>  <div class="text-white ">
-      <p>MohamedSaad001@gmail.com</p>
-      <p>+212 6-02-33-56-70</p>
+<div id="footer" class="fixed bottom-0 left-0 right-0 bg-[#74531C] text-white p-2 flex items-center">
+  <img class="max-h-14 max-w-14 flex-grow" src="images/logo.png" alt="">
+  <div class="flex-grow text-center p-2 flex items-center justify-center">
+      <div>
+          <p>MohamedSaad001@gmail.com</p>
+          <p>+212 6-02-33-56-70</p>
+      </div>
   </div>
-  <div id="map" ></div> <!-- Map container -->
+  <div id="map" class="flex-grow w-40"></div> 
 </div>
 
-
-
-<!-- JavaScript de Leaflet -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<!-- Script pour initialiser la carte -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const map = L.map('map').setView([33.5623298, -7.5625511], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+  const footer = document.getElementById('footer');
 
-    L.marker([33.5623298, -7.5625511]).addTo(map)
-        .bindPopup('Votre localisation ici!')
-        .openPopup();
-});
+  window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+          footer.classList.remove('hidden');
+          footer.classList.add('block');
+      } else {
+          footer.classList.add('hidden');
+          footer.classList.remove('block');
+      }
+  });
+
+
+  const map = L.map('map').setView([33.5623298, -7.5625511], 12); 
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([33.5623298, -7.5625511]).addTo(map)
+      .bindPopup('Voici votre localisation!')
+      .openPopup();
 </script>
 
 <script>// Fonction pour afficher la modale
