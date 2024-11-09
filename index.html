@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
                   <div class="flex flex-shrink-0">
-                    <a href="index.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
+                    <a href="home.html"><img class="h-8 w-auto" src="images/logo.png" alt="Your Company"></a>
                   </div>
                   <div class="hidden sm:ml-6 sm:block absolute right-10">
                     <div class="flex space-x-4">
@@ -52,14 +52,14 @@
         </nav>
 
         <!-- Diaporama avec Tailwind -->
-        <div class="relative overflow-hidden max-w-[100vw] max-h-[90vh] w-full h-full pl-16 pr-12 sm:items-stretch   sm:justify-start">
+        <div class="relative overflow-hidden  pl-16 pr-12 sm:items-stretch   sm:justify-start">
           <div class="flex  justify-center w-[200%] slideshow-slide">
               <!-- Image 1 -->
-              <div class="w-1/2 h-auto m-10">
+              <div class="w-1/2 h-auto ml-10 mr-10 mt-10 sm:items-stretch   sm:justify-start">
                   <img src="images/defil1.jpg" alt="Image 1" class="w-full h-auto object-cover rounded-lg">
               </div>
               <!-- Image 2 -->
-              <div class="w-1/2 h-auto m-10">
+              <div class="w-1/2 h-auto ml-10 mr-10 mt-10 sm:items-stretch   sm:justify-start">
                   <img src="images/defil2.jpg" alt="Image 2" class="w-full h-auto object-cover rounded-lg">
               </div>
           </div>
@@ -68,9 +68,9 @@
         
 
         <div class="flex justify-center ">
-          <div class=" grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center pl-32 pr-32 pt-6 sm:items-stretch  max-w-7xl sm:justify-start">
+          <div class=" grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center pl-16 pr-16 pt-16 sm:items-stretch  max-w-6xl sm:justify-start">
             <!-- Bloc 1 avec une image locale -->
-            <div class=" rounded-lg overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:scale-105  hover:bg-[#C5B9A4] font-bold">
+            <div class=" rounded-lg overflow-hidden   shadow-lg bg-white transition-transform duration-300 hover:scale-105  hover:bg-[#C5B9A4] font-bold">
               <img src="images/droit-civil-1.jpg" alt="Image 1" class="w-full h-auto object-cover"><br>
               <p class="text-sm text-gray-600">Régir les relations entre les personnes, en matière de famille, de propriété et de contrats.</p>
             </div>
@@ -93,14 +93,14 @@
         
       
         <div class="flex justify-center">
-          <div class="m-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-7xl w-full *:text-2xl font-bold">
+          <div class="m-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-7xl w-full *:text-2xl font-bold">
               
               <div style="background-color: #A1875D; color: #333333;" class="min-h-[100px] rounded-lg p-4 ">
                   +750
                   <p class="text-sm font-normal">Affaires traitées avec succès</p>
               </div>
               
-              <div style="background-color: #29271C; color: #615858;" class="min-h-[100px] p-4 rounded-lg text-white">
+              <div style="background-color: #29271C; color: #693030;" class="min-h-[100px] p-4 rounded-lg text-white">
                   97%
                   <p class="text-sm font-normal">Taux de réussite</p>
               </div>
@@ -148,8 +148,8 @@
         
       </div>
                 
-      <div class="relative flex justify-center items-center w-full h-auto m-10">
-        <div class="relative w-1/2">
+      <div class="relative flex justify-center  items-center w-full h-auto m-6 sm:items-stretch   ">
+        <div class="relative w-auto  pr-10">
           <!-- Image avec largeur personnalisée -->
           <img src="images/adv-criminalista-1.jpg" alt="Image 1" class="w-full h-auto  rounded-lg">
           
@@ -162,36 +162,43 @@
       
       
         <!-- Footer avec Google Maps -->
-         
-        <div id="footer" class=" bottom-0 left-0 right-0 bg-[#74531C] text-white flex items-center justify-between p-4">
-          <img class="h-14 w-14" src="/images/logo.png" alt="Logo">
-          <div class="text-center">
-              <p>MohamedSaad001@gmail.com</p>
-              <p>+212 6-02-33-56-70</p>
+        <div id="footer" class="fixed bottom-0 left-0 right-0 bg-[#74531C] text-white p-2 flex items-center">
+          <img class="max-h-14 max-w-14 flex-grow" src="images/logo.png" alt="">
+          <div class="flex-grow text-center p-2 flex items-center justify-center">
+              <div>
+                  <p>MohamedSaad001@gmail.com</p>
+                  <p>+212 6-02-33-56-70</p>
+              </div>
           </div>
-          <div id="map" class="w-40 h-40 rounded-md"></div> <!-- Map container -->
-      </div>
-      
-      
-
-      <!-- JavaScript de Leaflet -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-    <!-- Script pour initialiser la carte -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const map = L.map('map').setView([33.5623298, -7.5625511], 13);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
-
-            L.marker([33.5623298, -7.5625511]).addTo(map)
-                .bindPopup('Votre localisation ici!')
-                .openPopup();
-        });
-    </script>
-
+          <div id="map" class="flex-grow w-40"></div> 
+        </div>
+    
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+    
+          const footer = document.getElementById('footer');
+    
+          window.addEventListener('scroll', () => {
+              if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+                  footer.classList.remove('hidden');
+                  footer.classList.add('block');
+              } else {
+                  footer.classList.add('hidden');
+                  footer.classList.remove('block');
+              }
+          });
+    
+    
+          const map = L.map('map').setView([33.5623298, -7.5625511], 12); 
+    
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; OpenStreetMap contributors'
+          }).addTo(map);
+    
+          L.marker([33.5623298, -7.5625511]).addTo(map)
+              .bindPopup('Voici votre localisation!')
+              .openPopup();
+        </script>
     
         
 
